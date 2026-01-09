@@ -332,19 +332,36 @@ def parse_amazon_html(html_file_path="amazon.html"):
 
     soup = BeautifulSoup(html_content, "lxml")
 
-    # -------- PRICE EXTRACTION (kept the same) --------
+    # -------- CHECK FOR AVAILABILITY MESSAGES (new) --------
+    import re
     price = None
+    page_text = soup.get_text(separator=" ", strip=True)
 
-    # Locate the element that holds the price information (the 'a-price-whole' class for the whole price)
-    price_whole = soup.find("span", {"class": "a-price-whole"})  # The main price whole part
-    price_fraction = soup.find("span", {"class": "a-price-fraction"})  # The decimal part of the price
-    price_symbol = soup.find("span", {"class": "a-price-symbol"})  # The currency symbol
+    availability_phrases = [
+        "Currently unavailable",
+        "This item cannot be shipped to your selected delivery location"
+    ]
 
-    # If we found the whole part and fraction part of the price
-    if price_whole and price_fraction:
-        # Safely get symbol text if present
-        symbol_text = price_symbol.get_text().strip() if price_symbol else ""
-        price = symbol_text + price_whole.get_text().strip() + "." + price_fraction.get_text().strip()
+    for phrase in availability_phrases:
+        m = re.search(re.escape(phrase), page_text, re.I)
+        if m:
+            # set price to the matched phrase exactly as found on page
+            price = m.group(0)
+            break
+
+    # -------- PRICE EXTRACTION (kept the same) --------
+    # If neither availability phrase was found, run the original price extraction logic
+    if price is None:
+        # Locate the element that holds the price information (the 'a-price-whole' class for the whole price)
+        price_whole = soup.find("span", {"class": "a-price-whole"})  # The main price whole part
+        price_fraction = soup.find("span", {"class": "a-price-fraction"})  # The decimal part of the price
+        price_symbol = soup.find("span", {"class": "a-price-symbol"})  # The currency symbol
+
+        # If we found the whole part and fraction part of the price
+        if price_whole and price_fraction:
+            # Safely get symbol text if present
+            symbol_text = price_symbol.get_text().strip() if price_symbol else ""
+            price = symbol_text + price_whole.get_text().strip() + "." + price_fraction.get_text().strip()
 
     # Print price or fallback message
     if price:
@@ -371,6 +388,7 @@ def parse_amazon_html(html_file_path="amazon.html"):
         print("Model number not found in the HTML file.")
 
     return price, model_number
+
 
 # -----------------------
 # BESTBUY-specific logic
@@ -547,7 +565,7 @@ def extract_sku_from_url(url: str):
 
 
 def extract_price(filename):
-    """Extract 512GB model price from saved HTML using BeautifulSoup."""
+    """Extract  model price from saved HTML using BeautifulSoup."""
     if not os.path.exists(filename):
         print(f"❌ File not found for parsing: {filename}")
         return None
@@ -570,15 +588,15 @@ def extract_price(filename):
             break
 
     # Otherwise find 512GB
-    if target is None:
-        for r in radios:
-            if "512" in r.get_text():
-                target = r
-                break
+    # if target is None:
+    #     for r in radios:
+    #         if "512" in r.get_text():
+    #             target = r
+    #             break
 
-    if not target:
-        print("❌ Could not find 512GB radio")
-        return None
+    # if not target:
+    #     print("❌ Could not find 512GB radio")
+    #     return None
 
     # Extract price
     text = target.get_text("\n", strip=True)
