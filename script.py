@@ -762,8 +762,37 @@ async def main():
     "https://www.amazon.com/Samsung-Smartphone-Unlocked-Manufacturer-Warranty/dp/B0F7K9LFCL/ref=sr_1_3?crid=2IIQ350CABWC7&keywords=galaxy%2Bz%2Bfold%2B7&th=1",
     #512gb silver shadow
     "https://www.amazon.com/Samsung-Smartphone-Unlocked-Manufacturer-Warranty/dp/B0F7J243YH/ref=sr_1_3?crid=2IIQ350CABWC7&keywords=galaxy%2Bz%2Bfold%2B7&th=1",
-
     
+
+
+
+
+
+
+    #s25 ultra 256gb titanium black
+    "https://www.amazon.com/Smartphone-Unlocked-Processor-Manufacturer-Silverblue/dp/B0DP3GQ4QY/ref=sr_1_1?crid=2OCXY9JS2C2BO&dib=eyJ2IjoiMSJ9.uqQhueQzsbHe8zENbFmj7dPj7jSJEhMlQYfh62EDEp3xILbjXGGsUY5dJ8J_RqFmPrU9Wk-ajkTu-1OGBCqRjZOKNruE2tli1gYxD7MwgPXT7xP_Rj9bebKJyLidPy47j0YHo7dLzNITaWD7QcaCCIXMi5J1bUWvGwfQfOufUTKSOt14lWodwgk1Z5S5f_OMUvVwsk7fedeFppWKpdPUQ9Ximpz2_syOzHf193Tw0uY.AXDVzX7Lxk4fuhf3tpvgRQZNeXbGQBpVEvS8lcbL734&dib_tag=se&keywords=s25%2Bultra&qid=1768041733&sprefix=s25%2Bultr%2Caps%2C342&sr=8-1&th=1",
+    #s25 ultra 256gb titanium gray
+    "https://www.amazon.com/Smartphone-Unlocked-Processor-Manufacturer-Silverblue/dp/B0DP3GDTCF/ref=sr_1_1?crid=2OCXY9JS2C2BO&dib=eyJ2IjoiMSJ9.uqQhueQzsbHe8zENbFmj7dPj7jSJEhMlQYfh62EDEp3xILbjXGGsUY5dJ8J_RqFmPrU9Wk-ajkTu-1OGBCqRjZOKNruE2tli1gYxD7MwgPXT7xP_Rj9bebKJyLidPy47j0YHo7dLzNITaWD7QcaCCIXMi5J1bUWvGwfQfOufUTKSOt14lWodwgk1Z5S5f_OMUvVwsk7fedeFppWKpdPUQ9Ximpz2_syOzHf193Tw0uY.AXDVzX7Lxk4fuhf3tpvgRQZNeXbGQBpVEvS8lcbL734&dib_tag=se&keywords=s25%2Bultra&qid=1768041733&sprefix=s25%2Bultr%2Caps%2C342&sr=8-1&th=1",
+    #s25 ultra 256gb titanium silver blue
+    "https://www.amazon.com/Smartphone-Unlocked-Processor-Manufacturer-Silverblue/dp/B0DP3CP2SY/ref=sr_1_1?crid=2OCXY9JS2C2BO&dib=eyJ2IjoiMSJ9.uqQhueQzsbHe8zENbFmj7dPj7jSJEhMlQYfh62EDEp3xILbjXGGsUY5dJ8J_RqFmPrU9Wk-ajkTu-1OGBCqRjZOKNruE2tli1gYxD7MwgPXT7xP_Rj9bebKJyLidPy47j0YHo7dLzNITaWD7QcaCCIXMi5J1bUWvGwfQfOufUTKSOt14lWodwgk1Z5S5f_OMUvVwsk7fedeFppWKpdPUQ9Ximpz2_syOzHf193Tw0uY.AXDVzX7Lxk4fuhf3tpvgRQZNeXbGQBpVEvS8lcbL734&dib_tag=se&keywords=s25%2Bultra&qid=1768041733&sprefix=s25%2Bultr%2Caps%2C342&sr=8-1&th=1",
+    #s25 ultra 256gb titanium white silver
+    "https://www.amazon.com/Smartphone-Unlocked-Processor-Manufacturer-Silverblue/dp/B0DP3GP92Z/ref=sr_1_1?crid=2OCXY9JS2C2BO&dib=eyJ2IjoiMSJ9.uqQhueQzsbHe8zENbFmj7dPj7jSJEhMlQYfh62EDEp3xILbjXGGsUY5dJ8J_RqFmPrU9Wk-ajkTu-1OGBCqRjZOKNruE2tli1gYxD7MwgPXT7xP_Rj9bebKJyLidPy47j0YHo7dLzNITaWD7QcaCCIXMi5J1bUWvGwfQfOufUTKSOt14lWodwgk1Z5S5f_OMUvVwsk7fedeFppWKpdPUQ9Ximpz2_syOzHf193Tw0uY.AXDVzX7Lxk4fuhf3tpvgRQZNeXbGQBpVEvS8lcbL734&dib_tag=se&keywords=s25%2Bultra&qid=1768041733&sprefix=s25%2Bultr%2Caps%2C342&sr=8-1&th=1",
+    #s25 ultra 512gb titanium gray
+    "https://www.amazon.com/Smartphone-Unlocked-Processor-Manufacturer-Silverblue/dp/B0DP5S1MQJ/ref=sr_1_1?crid=2OCXY9JS2C2BO&dib=eyJ2IjoiMSJ9.uqQhueQzsbHe8zENbFmj7dPj7jSJEhMlQYfh62EDEp3xILbjXGGsUY5dJ8J_RqFmPrU9Wk-ajkTu-1OGBCqRjZOKNruE2tli1gYxD7MwgPXT7xP_Rj9bebKJyLidPy47j0YHo7dLzNITaWD7QcaCCIXMi5J1bUWvGwfQfOufUTKSOt14lWodwgk1Z5S5f_OMUvVwsk7fedeFppWKpdPUQ9Ximpz2_syOzHf193Tw0uY.AXDVzX7Lxk4fuhf3tpvgRQZNeXbGQBpVEvS8lcbL734&dib_tag=se&keywords=s25%2Bultra&qid=1768041733&sprefix=s25%2Bultr%2Caps%2C342&sr=8-1&th=1",
+    #s25 ultra 512gb titanium silver blue
+    "https://www.amazon.com/Smartphone-Unlocked-Processor-Manufacturer-Silverblue/dp/B0DP3F8GK1/ref=sr_1_1?crid=2OCXY9JS2C2BO&dib=eyJ2IjoiMSJ9.uqQhueQzsbHe8zENbFmj7dPj7jSJEhMlQYfh62EDEp3xILbjXGGsUY5dJ8J_RqFmPrU9Wk-ajkTu-1OGBCqRjZOKNruE2tli1gYxD7MwgPXT7xP_Rj9bebKJyLidPy47j0YHo7dLzNITaWD7QcaCCIXMi5J1bUWvGwfQfOufUTKSOt14lWodwgk1Z5S5f_OMUvVwsk7fedeFppWKpdPUQ9Ximpz2_syOzHf193Tw0uY.AXDVzX7Lxk4fuhf3tpvgRQZNeXbGQBpVEvS8lcbL734&dib_tag=se&keywords=s25%2Bultra&qid=1768041733&sprefix=s25%2Bultr%2Caps%2C342&sr=8-1&th=1",
+    #s25 ultra 512gb titanium white silver
+    "https://www.amazon.com/Smartphone-Unlocked-Processor-Manufacturer-Silverblue/dp/B0DP3GBGCF/ref=sr_1_1?crid=2OCXY9JS2C2BO&dib=eyJ2IjoiMSJ9.uqQhueQzsbHe8zENbFmj7dPj7jSJEhMlQYfh62EDEp3xILbjXGGsUY5dJ8J_RqFmPrU9Wk-ajkTu-1OGBCqRjZOKNruE2tli1gYxD7MwgPXT7xP_Rj9bebKJyLidPy47j0YHo7dLzNITaWD7QcaCCIXMi5J1bUWvGwfQfOufUTKSOt14lWodwgk1Z5S5f_OMUvVwsk7fedeFppWKpdPUQ9Ximpz2_syOzHf193Tw0uY.AXDVzX7Lxk4fuhf3tpvgRQZNeXbGQBpVEvS8lcbL734&dib_tag=se&keywords=s25%2Bultra&qid=1768041733&sprefix=s25%2Bultr%2Caps%2C342&sr=8-1&th=1",
+    #s25 ultra 1tb titanium black
+    #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzkfxaa/",
+    #s25 ultra 1tb silver blue
+    #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzbfxaa/",
+    #s25 ultra 1tb white silver
+    #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzsfxaa/",
+    #s25 edge 256gb titanium silver
+    "https://www.amazon.com/SAMSUNG-Smartphone-Processor-ProScaler-Manufacturer/dp/B0DYVPJ5KD/ref=sr_1_2?crid=1M68RADQF1L03&dib=eyJ2IjoiMSJ9.WYBGTsYsYreUEDuwL6ibZ_36-GLK18wvNZAtoNJSu1YfSlow3iojC_CNZjzSXBHUfF8x3q10WG2dw8_YoqqG1RxCz_N5mIp-qXPEVsF_w0mU2XcJQ6kh45H2jGnWLGVoj2LQ-_256xDdaf224kgBrgDpK9TPvsn_opygq0fcUF-Dns9GqO_cbFVasK3cm_7JZMcIlp39FhZTYghIKBrXwFZb6MwuHvGEJf9vhG3xddc.XYKlktc015l2spoRA2oRTCbQ27oapL8ew-j_OcdUUcg&dib_tag=se&keywords=s25%2Bedge%2B256gb%2Btitanium%2Bsilver&qid=1768045803&sprefix=s25%2Bedge%2B256gb%2Btitanium%2Bsilver%2Caps%2C964&sr=8-2&th=1",
+    #s25 edge 512gb titanium jet black
+    "https://www.amazon.com/SAMSUNG-Smartphone-Processor-ProScaler-Manufacturer/dp/B0DYVMVZSY/ref=sr_1_2?crid=1M68RADQF1L03&dib=eyJ2IjoiMSJ9.WYBGTsYsYreUEDuwL6ibZ_36-GLK18wvNZAtoNJSu1YfSlow3iojC_CNZjzSXBHUfF8x3q10WG2dw8_YoqqG1RxCz_N5mIp-qXPEVsF_w0mU2XcJQ6kh45H2jGnWLGVoj2LQ-_256xDdaf224kgBrgDpK9TPvsn_opygq0fcUF-Dns9GqO_cbFVasK3cm_7JZMcIlp39FhZTYghIKBrXwFZb6MwuHvGEJf9vhG3xddc.XYKlktc015l2spoRA2oRTCbQ27oapL8ew-j_OcdUUcg&dib_tag=se&keywords=s25%2Bedge%2B256gb%2Btitanium%2Bsilver&qid=1768045803&sprefix=s25%2Bedge%2B256gb%2Btitanium%2Bsilver%2Caps%2C964&sr=8-2&th=1",
 
     ]
 
@@ -794,6 +823,37 @@ async def main():
         #512gb silver shadow
         "https://www.bestbuy.com/product/samsung-galaxy-z-fold7-512gb-unlocked-silver-shadow/JJGRF3XK8Y",
 
+
+
+
+
+
+
+
+    #s25 ultra 256gb titanium black
+    "https://www.bestbuy.com/product/samsung-galaxy-s25-ultra-256gb-unlocked-titanium-black/J3ZYG25JP5",
+    #s25 ultra 256gb titanium gray
+    "https://www.bestbuy.com/product/samsung-galaxy-s25-ultra-256gb-unlocked-titanium-gray/J3ZYG25HGR",
+    #s25 ultra 256gb titanium silver blue
+    "https://www.bestbuy.com/product/samsung-galaxy-s25-ultra-256gb-unlocked-titanium-silverblue/J3ZYG25H48",
+    #s25 ultra 256gb titanium white silver
+    "https://www.bestbuy.com/product/samsung-galaxy-s25-ultra-256gb-unlocked-titanium-whitesilver/J3ZYG2VPX3",
+    #s25 ultra 512gb titanium gray
+    "https://www.bestbuy.com/product/samsung-galaxy-s25-ultra-512gb-unlocked-titanium-gray/J3ZYG25TPR",
+    #s25 ultra 512gb titanium silver blue
+    "https://www.bestbuy.com/product/samsung-galaxy-s25-ultra-512gb-unlocked-titanium-silverblue/J3ZYG25HW9",
+    #s25 ultra 512gb titanium white silver
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-512gb-unlocked-sku-sm-s938uzsexaa/",
+    #s25 ultra 1tb titanium black
+    #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzkfxaa/",
+    #s25 ultra 1tb silver blue
+    #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzbfxaa/",
+    #s25 ultra 1tb white silver
+    #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzsfxaa/",
+    #s25 edge 256gb titanium silver
+    "https://www.bestbuy.com/product/samsung-galaxy-s25-edge-256gb-unlocked-titanium-silver/JJGRF3CQHC",
+    #s25 edge 512gb titanium jet black
+    "https://www.bestbuy.com/product/samsung-galaxy-s25-edge-512gb-unlocked-titanium-jet-black/JJGRF3CQKC",
     ]
 
     samsung_urls = [
@@ -823,6 +883,37 @@ async def main():
     "https://www.samsung.com/us/smartphones/galaxy-z-fold7/buy/galaxy-z-fold7-512gb-unlocked-sku-sm-f966uzkexaa/",
     #512gb silver shadow
     "https://www.samsung.com/us/smartphones/galaxy-z-fold7/buy/galaxy-z-fold7-512gb-unlocked-sku-sm-f966uzsexaa/",
+
+
+
+
+
+
+    #s25 ultra 256gb titanium black
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-256gb-unlocked-sku-sm-s938uzkaxaa/",
+    #s25 ultra 256gb titanium gray
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-256gb-unlocked-sku-sm-s938uztaxaa/",
+    #s25 ultra 256gb titanium silver blue
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-256gb-unlocked-sku-sm-s938uzbaxaa/",
+    #s25 ultra 256gb titanium white silver
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-256gb-unlocked-sku-sm-s938uzsaxaa/",
+    #s25 ultra 512gb titanium gray
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-512gb-unlocked-sku-sm-s938uztexaa/",
+    #s25 ultra 512gb titanium silver blue
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-512gb-unlocked-sku-sm-s938uzbexaa/",
+    #s25 ultra 512gb titanium white silver
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-512gb-unlocked-sku-sm-s938uzsexaa/",
+    #s25 ultra 1tb titanium black
+    #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzkfxaa/",
+    #s25 ultra 1tb silver blue
+    #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzbfxaa/",
+    #s25 ultra 1tb white silver
+    #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzsfxaa/",
+    #s25 edge 256gb titanium silver
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-edge-256gb-unlocked-sku-sm-s937uzsaxaa/",
+    #s25 edge 512gb titanium jet black
+    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-edge-512gb-unlocked-sku-sm-s937uzkexaa/",
+
     
 
     ]
