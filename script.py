@@ -843,7 +843,7 @@ async def main():
     #s25 ultra 512gb titanium silver blue
     "https://www.bestbuy.com/product/samsung-galaxy-s25-ultra-512gb-unlocked-titanium-silverblue/J3ZYG25HW9",
     #s25 ultra 512gb titanium white silver
-    "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-512gb-unlocked-sku-sm-s938uzsexaa/",
+    "https://www.bestbuy.com/product/samsung-galaxy-s25-ultra-512gb-unlocked-titanium-whitesilver/J3ZYG2VP76",
     #s25 ultra 1tb titanium black
     #"https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-ultra-1tb-unlocked-sku-sm-s938uzkfxaa/",
     #s25 ultra 1tb silver blue
