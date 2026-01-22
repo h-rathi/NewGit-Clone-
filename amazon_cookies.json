@@ -5,7 +5,7 @@
             "value": "132-6689775-3766256",
             "domain": ".amazon.com",
             "path": "/",
-            "expires": 1803598196.920529,
+            "expires": 1803684617.99712,
             "httpOnly": false,
             "secure": true,
             "sameSite": "Lax"
@@ -15,7 +15,7 @@
             "value": "2082787201l",
             "domain": ".amazon.com",
             "path": "/",
-            "expires": 1803598196.920633,
+            "expires": 1803684617.997232,
             "httpOnly": false,
             "secure": true,
             "sameSite": "Lax"
@@ -55,7 +55,7 @@
             "value": "A2Fnx39B30Uou7sL_rgZIrM",
             "domain": ".amazon-adsystem.com",
             "path": "/",
-            "expires": 1790854321.440434,
+            "expires": 1790897429.701241,
             "httpOnly": true,
             "secure": true,
             "sameSite": "None"
@@ -65,7 +65,7 @@
             "value": "0",
             "domain": ".amazon-adsystem.com",
             "path": "/",
-            "expires": 1803641521.440517,
+            "expires": 1803684629.701371,
             "httpOnly": true,
             "secure": true,
             "sameSite": "None"
@@ -776,30 +776,30 @@
         },
         {
             "name": "session-token",
-            "value": "nA0+RUwptRzjKy6VvSvyBXNWqgu4xmiwFuacW6hyMBqmX8tC0Z6vYLInDA1ClUQhrBSe+QRHtXzS0aOk0zx/N06olFmJ/Vc+8LEJnvMqHzMR1sr9g6w9q4wswcy7hBfPb2/YeFDMiDURRA/Pw9h42nz+O2Ugx4/Fe1OZV8OrsZ5CuSAneMG3q5JENii9hnFctPEf+xJa8TxhTGOL782AwA9hM32fbnLUTC924M+t5ZXGcWTS3hAkl1R1yRV3S1FdFtsA4FGUqqqGR0U4ZzfECQSODNwmHy6nMOkfMW4LgcyokcUwKViy4O5zLQNv7zt78tEbhDkklQJe8HUR8/VP3cQGXNexmBFq",
+            "value": "Jv8hrmmr1jNLuX1IZ84J6PIIXccuW0ZWlkx7QgyBVrjgwGWivv2+Upp6IWrle1GB+YE7QgqKUY1e8lGV76bI3YgabKgohcRPk45RYqLHybo8r+hlF+Y7ISGz78U3+D9HY4mvfE9A/9XvRD/zMLDb8X+g+cs9yhWeYldC9hy1TI/HjGxc61VSYZEnV5wq6zWeUAx7/1/MJthYs9Zhdh71wTOdyyjmtrcHNe4vVgWVKKWqqbMJewMMM7T1+VBFLtP3TtNgKACpwUIXDT7IDDFnvCuOkhhhiqdXH+YnEeT7vCqsQsaqRqybd8Zf1mx7NCuwxjBuDOHr4u7GqzvbOco8Zlyf/lJRe1Kq",
             "domain": ".amazon.com",
             "path": "/",
-            "expires": 1800617268.365137,
-            "httpOnly": false,
+            "expires": 1803684617.997289,
+            "httpOnly": true,
             "secure": true,
             "sameSite": "Lax"
         },
         {
             "name": "csm-hit",
-            "value": "tb:s-MRBS025KKKRQ87C5YJ04|1769081518764&t:1769081520509&adb:adblk_no",
+            "value": "tb:s-FZW9JNM446X7GAT91M7X|1769124627153&t:1769124628690&adb:adblk_no",
             "domain": "www.amazon.com",
             "path": "/",
-            "expires": 1799321520,
+            "expires": 1799364628,
             "httpOnly": false,
             "secure": false,
             "sameSite": "Lax"
         },
         {
             "name": "rxc",
-            "value": "AINAxkNDJRGOjw3cxb0",
+            "value": "AINAxkOunBGOjw3cz70",
             "domain": "www.amazon.com",
             "path": "/",
-            "expires": 1769167940.896847,
+            "expires": 1769211049.131026,
             "httpOnly": false,
             "secure": false,
             "sameSite": "Lax"
@@ -811,23 +811,15 @@
             "localStorage": [
                 {
                     "name": "csm-bf",
-                    "value": "[\"MRBS025KKKRQ87C5YJ04\",\"K2WJ18XTP810Y8PAR8BF\",\"92RV2X3VRZ1DCQWMZ8CA\",\"9GGY3PDH1KWAKJAHPCPW\",\"DBX59VFA0B9PQ3W0Q8X2\",\"BX6H97M1C2H7F9GVNWWK\",\"QKA9AXZ5MHV5SV6ZR7D4\",\"4C1G8CA82RF0QRNCW090\",\"B07AKTJKP2M5RXS75QMD\",\"R416DYBFYJD3N5V2CN1B\",\"0FG70DDZ8TV9TRD57MG3\",\"MPRHA1YEMNQZ1XR1WMTV\",\"WCB4A6NT5BRRA27CHV1V\",\"39PA5ND1X477YMY8RHG1\",\"M23NZEZBNGF1WW2TFZ28\",\"12SVN6ESMVA5JV1HWW8K\",\"531D4K50EHP663XEKHF1\",\"ZV4SF54E9EBPKAT67XHY\",\"PP2NX2JJSWXFJDK5GNTE\",\"VA06D85VZ7NF3RV2FTHQ\"]"
+                    "value": "[\"FZW9JNM446X7GAT91M7X\",\"3HZEJVG9NPWPZZ4KQEF4\",\"FME2BMRYM90KEE03HHW1\",\"67ZFG7TVRWNQD5E7443J\",\"0ZJEXRV3GNT3WVK986F4\",\"YZ6R5XGD2QFJ8MKFCQ2E\",\"WD2E0KHQSB5931Q3Y2QK\",\"W1CC467JYYAB3EWB3ZHH\",\"XW77VCN29JWM7DR4S4PE\",\"JV0XR4189PZM2EGREKD8\",\"W593J7FZT9Z1N04ZVP0Z\",\"EVZ0GJKKHX237NR56KMS\",\"N9B0KKJVHJ421KDZT7RF\",\"342YN6E5DF6Y8EJJ0ZQJ\",\"8R5D4G789AG5YMYY574K\",\"XCQSMV47ZRFBNXA5DH1P\",\"5TN8DQWFP4HFA8DXPVP4\",\"2VWZWPDP0R18G7X0FPGM\",\"Q7HFV3EHE66V1QY83KZE\",\"KDX25PJY2XE5NRTF20Y9\"]"
                 },
                 {
-                    "name": "csa-ctoken-92RV2X3VRZ1DCQWMZ8CA",
-                    "value": "1769085070389"
-                },
-                {
-                    "name": "csa-ctoken-MRBS025KKKRQ87C5YJ04",
-                    "value": "1769085120513"
+                    "name": "csa-ctoken-XA9TBT5PD1H22EHFD6ED",
+                    "value": "1769127680462"
                 },
                 {
                     "name": "SWAX:PATC_META_KEY",
-                    "value": "{\"key\":\"_PATC_CONFIG\",\"expiry\":1769081567486}"
-                },
-                {
-                    "name": "csa-ctoken-MPRHA1YEMNQZ1XR1WMTV",
-                    "value": "1769084840052"
+                    "value": "{\"key\":\"_PATC_CONFIG\",\"expiry\":1769124655106}"
                 },
                 {
                     "name": "csm:adb",
@@ -835,39 +827,43 @@
                 },
                 {
                     "name": "rx",
-                    "value": "AINAxkP8DQaB7Tanuuz/QJtzFT8rHxdUze1g6pXq2bOyGIJi9o7XSqq3SL63/w5XwI4FBBHOD5hYnWgq2bTPLEenujZY2z76yUdo982VwlSlqpDkXmqwYyj37hpPyXzTcAVcq0+Rh7s9poOaMP3fdtAZd6hkoiHQjxHfA4Z1DsjWOF/7TFLf4fKMXZXQbPSBJmaXMuSuNw6SWuJwTtEV0d3zjysCI6ohO/m623C8ILvkZk8QlCMZP1n6+lSVm3E0Yp+qxovdp+W9yoLZkosvwPFAHZvHzRxjkeBQ+zl++6BFOR7KM0MDZtTGTjQGzygZuRhSxlQph6hGCjq9a5eOx5j2W8e9wimf8vqRBdI8aYX0UyH2oTaZGjyeJtRrCLouEsdn7trrUpaScURyI5CPr+DJBIu4SX4hSKYkqBMkH+pFjK5K1uvQHjb4ZuK7htExixTLRnQ9P3NqP3Jbb7n74yiQtE1PMeT7qgjiUjS7sfdZqQe1FpWgTmydtKtSjkGbkbq3BCVfO3RXkN5dZsip/F5DME+G7uWnAjS8kjzouVfB8qyuQwwFVex+OX4ZKObqxIxQWLrddJQee0AiOkhPzo1lzhcTa/LS8HESKivw5V8jwed8TThWxFOsLk4v96oybWwtztgdmPtXdrYezIvhmQ"
+                    "value": "AINAxkP8DQaB7Tanuuz/QJtzFT8rHxdUze1g6pXq2bOyGIJi9o7XSqq3SL63/w5XwI4FBBHOD5hYnWgq2bTPLEenujZY2z76yUdo982VwlSlqpDkXmqwYyj37hpPyXzTcAVcq0+Rh7s9poOaMP3fdtAZd6hkoiHQjxHfA4Z1DsnWOFn2Q1zf5PKGX5jVb/6PJmaXMuSuNw6RUOJwTtsQ2tr3gigGKq8hPP6623C8ILvkZk8UmiUZPlvz+lyRkn0xYpui3oWSq9uBi5rRmJIzwv5CEpDHyx9unuZT9TJk9e9JByyFK0gDesvMSzMHzCgZuh9XwVIqhKhGCjq9a5eOxZ/2W8y4wime/fqfDNMzbYDrXXDmnQrYAjaCKIV7NIhhCs174Iv7brrDaU5uLcGQ4fjBBZS2BXRnUK4jsQomF+5OiqFI1+nbHzT2a+K7htExixTLRnc9PXNsPHdZarvx7yWWt0FPMeT7qgjiUjS7sfdZqQe1FpWgTmydtKtSjkGbkbq3BCVfO3RXkN5dZsip/F5DME+G7uWnAjS8kjzouVfB8qyuQwwFVex+OX4ZKObqxIxQWLrddJQee0AiOkhPzo1lzhcTa/LS8HESKivw5V8jwed8TThWxFOsLk4v96oybWwtztgdmPtXdrYezIvhmQ"
                 },
                 {
-                    "name": "csa-ctoken-531D4K50EHP663XEKHF1",
-                    "value": "1769084716844"
+                    "name": "csa-ctoken-FZW9JNM446X7GAT91M7X",
+                    "value": "1769128228703"
                 },
                 {
-                    "name": "csa-ctoken-VA06D85VZ7NF3RV2FTHQ",
-                    "value": "1769084643380"
+                    "name": "csa-ctoken-Q7HFV3EHE66V1QY83KZE",
+                    "value": "1769127754920"
                 },
                 {
                     "name": "csa-tabbed-browsing",
-                    "value": "{\"lastActive\":{\"visible\":true,\"pid\":\"lljoo5-m1lr7b-czr3a0-bktocy\",\"tid\":\"lljoo5-m1lr7b-czr3a0-bktocy\",\"ent\":{\"rid\":\"Q0231HVWYT3B0TCNX9N6\",\"ety\":\"Detail\",\"esty\":\"Glance\"}},\"lastInteraction\":{},\"time\":1769081520514,\"initialized\":true}"
+                    "value": "{\"lastActive\":{\"visible\":true,\"pid\":\"lljoo5-m1lr7b-czr3a0-bktocy\",\"tid\":\"lljoo5-m1lr7b-czr3a0-bktocy\",\"ent\":{\"rid\":\"Q0231HVWYT3B0TCNX9N6\",\"ety\":\"Detail\",\"esty\":\"Glance\"}},\"lastInteraction\":{},\"time\":1769124628704,\"initialized\":true}"
                 },
                 {
-                    "name": "csa-ctoken-DBX59VFA0B9PQ3W0Q8X2",
-                    "value": "1769085016720"
+                    "name": "csa-ctoken-8R5D4G789AG5YMYY574K",
+                    "value": "1769127859664"
                 },
                 {
-                    "name": "csa-ctoken-K2WJ18XTP810Y8PAR8BF",
-                    "value": "1769085093910"
+                    "name": "csa-ctoken-342YN6E5DF6Y8EJJ0ZQJ",
+                    "value": "1769127884481"
                 },
                 {
-                    "name": "csa-ctoken-9GGY3PDH1KWAKJAHPCPW",
-                    "value": "1769085044506"
-                },
-                {
-                    "name": "csa-ctoken-B07AKTJKP2M5RXS75QMD",
-                    "value": "1769084918716"
+                    "name": "csa-ctoken-YZ6R5XGD2QFJ8MKFCQ2E",
+                    "value": "1769128090246"
                 },
                 {
                     "name": "csm-hit",
-                    "value": "tb:s-MRBS025KKKRQ87C5YJ04|1769081518764&t:1769081520509&adb:adblk_no"
+                    "value": "tb:s-FZW9JNM446X7GAT91M7X|1769124627153&t:1769124628690&adb:adblk_no"
+                },
+                {
+                    "name": "csa-ctoken-W1CC467JYYAB3EWB3ZHH",
+                    "value": "1769128037886"
+                },
+                {
+                    "name": "csa-ctoken-VWH0YDQEHTX9X2VTNTCF",
+                    "value": "1769127654144"
                 },
                 {
                     "name": "_PATC_CONFIG",
@@ -875,79 +871,83 @@
                 },
                 {
                     "name": "rx-pnt",
-                    "value": "1769081518|23"
+                    "value": "1769124626|23"
+                },
+                {
+                    "name": "csa-ctoken-N9B0KKJVHJ421KDZT7RF",
+                    "value": "1769127910944"
+                },
+                {
+                    "name": "csa-ctoken-JV0XR4189PZM2EGREKD8",
+                    "value": "1769127984736"
+                },
+                {
+                    "name": "csa-ctoken-W593J7FZT9Z1N04ZVP0Z",
+                    "value": "1769127959503"
                 },
                 {
                     "name": "a-font-class",
                     "value": "a-ember a-ember-modern-display a-ember-modern-text a-ember-1-0-0 a-ember-modern-display-1-0-0 a-ember-modern-text-1-0-0"
                 },
                 {
+                    "name": "csa-ctoken-DQ63Q9XSNP93Q7XE848C",
+                    "value": "1769127705739"
+                },
+                {
                     "name": "amznfbgid",
                     "value": "X39-6080189-7482333:1763975065"
                 },
                 {
-                    "name": "csa-ctoken-T282N1PAHFJ2KEY8H17A",
-                    "value": "1769084592708"
+                    "name": "csa-ctoken-3HZEJVG9NPWPZZ4KQEF4",
+                    "value": "1769128201024"
                 },
                 {
-                    "name": "csa-ctoken-PP2NX2JJSWXFJDK5GNTE",
-                    "value": "1769084668005"
-                },
-                {
-                    "name": "csa-ctoken-39PA5ND1X477YMY8RHG1",
-                    "value": "1769084788736"
+                    "name": "csa-ctoken-2VWZWPDP0R18G7X0FPGM",
+                    "value": "1769127781105"
                 },
                 {
                     "name": "puff:suppression",
-                    "value": "{\"132-6689775-3766256\":{\"disabled\":false,\"suppressUntil\":\"2026-01-22T12:22:48.857Z\",\"suppressionMessage\":\"Customer is unrecognized\"}}"
+                    "value": "{\"132-6689775-3766256\":{\"disabled\":false,\"suppressUntil\":\"2026-01-23T00:20:56.547Z\",\"suppressionMessage\":\"Customer is unrecognized\"}}"
                 },
                 {
-                    "name": "csa-ctoken-PJCZDFV3WVRR2GBTVXDH",
-                    "value": "1769084566415"
+                    "name": "csa-ctoken-XCQSMV47ZRFBNXA5DH1P",
+                    "value": "1769127831591"
                 },
                 {
-                    "name": "csa-ctoken-ZV4SF54E9EBPKAT67XHY",
-                    "value": "1769084692696"
+                    "name": "csa-ctoken-EVZ0GJKKHX237NR56KMS",
+                    "value": "1769127934188"
                 },
                 {
-                    "name": "csa-ctoken-QKA9AXZ5MHV5SV6ZR7D4",
-                    "value": "1769084967990"
+                    "name": "csa-ctoken-KDX25PJY2XE5NRTF20Y9",
+                    "value": "1769127729512"
                 },
                 {
-                    "name": "csa-ctoken-0FG70DDZ8TV9TRD57MG3",
-                    "value": "1769084867494"
+                    "name": "csa-ctoken-5TN8DQWFP4HFA8DXPVP4",
+                    "value": "1769127805231"
                 },
                 {
                     "name": "vse_brila_cc_status",
                     "value": "disabled"
                 },
                 {
-                    "name": "csa-ctoken-Z5AB9GVPGFYM22H5CVVV",
-                    "value": "1769084618035"
+                    "name": "csa-ctoken-FME2BMRYM90KEE03HHW1",
+                    "value": "1769128173269"
                 },
                 {
-                    "name": "csa-ctoken-4C1G8CA82RF0QRNCW090",
-                    "value": "1769084942425"
+                    "name": "csa-ctoken-0ZJEXRV3GNT3WVK986F4",
+                    "value": "1769128116232"
                 },
                 {
-                    "name": "csa-ctoken-R416DYBFYJD3N5V2CN1B",
-                    "value": "1769084894855"
+                    "name": "csa-ctoken-WD2E0KHQSB5931Q3Y2QK",
+                    "value": "1769128065290"
                 },
                 {
-                    "name": "csa-ctoken-BX6H97M1C2H7F9GVNWWK",
-                    "value": "1769084992518"
+                    "name": "csa-ctoken-XW77VCN29JWM7DR4S4PE",
+                    "value": "1769128010566"
                 },
                 {
-                    "name": "csa-ctoken-12SVN6ESMVA5JV1HWW8K",
-                    "value": "1769084740609"
-                },
-                {
-                    "name": "csa-ctoken-M23NZEZBNGF1WW2TFZ28",
-                    "value": "1769084765107"
-                },
-                {
-                    "name": "csa-ctoken-WCB4A6NT5BRRA27CHV1V",
-                    "value": "1769084814382"
+                    "name": "csa-ctoken-67ZFG7TVRWNQD5E7443J",
+                    "value": "1769128144713"
                 }
             ]
         },
