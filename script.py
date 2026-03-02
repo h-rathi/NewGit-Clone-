@@ -794,6 +794,85 @@ async def main():
     #s25 edge 512gb titanium jet black
     "https://www.amazon.com/SAMSUNG-Smartphone-Processor-ProScaler-Manufacturer/dp/B0DYVMVZSY/ref=sr_1_2?crid=1M68RADQF1L03&dib=eyJ2IjoiMSJ9.WYBGTsYsYreUEDuwL6ibZ_36-GLK18wvNZAtoNJSu1YfSlow3iojC_CNZjzSXBHUfF8x3q10WG2dw8_YoqqG1RxCz_N5mIp-qXPEVsF_w0mU2XcJQ6kh45H2jGnWLGVoj2LQ-_256xDdaf224kgBrgDpK9TPvsn_opygq0fcUF-Dns9GqO_cbFVasK3cm_7JZMcIlp39FhZTYghIKBrXwFZb6MwuHvGEJf9vhG3xddc.XYKlktc015l2spoRA2oRTCbQ27oapL8ew-j_OcdUUcg&dib_tag=se&keywords=s25%2Bedge%2B256gb%2Btitanium%2Bsilver&qid=1768045803&sprefix=s25%2Bedge%2B256gb%2Btitanium%2Bsilver%2Caps%2C964&sr=8-2&th=1",
 
+
+
+
+
+
+
+
+
+
+    #s26 ultra 256gb sky blue
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SX6C1G/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 ultra 256gb cobalt violet
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SX79VJ/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 ultra 256gb white
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SX9GDX/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 ultra 256gb black
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SWDH8P/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+
+
+    #s26 ultra 512gb sky blue
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SVV79P/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 ultra 512gb cobalt violet
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SWN34T/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 ultra 512gb white
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SZ6SJY/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 ultra 512gb black
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SW3XXP/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+
+
+    #s26 ultra 1tb sky blue
+    "",
+    #s26 ultra 1tb cobalt violet
+    "",
+    #s26 ultra 1tb white
+    "",
+    #s26 ultra 1tb black
+    "",
+
+
+    #s26 256gb sky blue
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SWZP8B/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 256gb cobalt violet
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SXD3TJ/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 256gb white
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SYJK4G/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 256gb black
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SW96R4/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+
+
+    #s26 512gb sky blue
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0GH3474YH/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 512gb cobalt violet
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0GH33V5NM/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 512gb white
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0GH3B3PFH/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26 512gb black
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0GH33YP71/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+
+
+    #s26+ 256gb sky blue
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SYN2QC/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26+ 256gb cobalt violet
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SVXVSP/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26+ 256gb white
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SYZVKC/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26+ 256gb black
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SWQC2Q/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+
+
+    #s26+ 512gb sky blue
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SVFSNP/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26+ 512gb cobalt violet
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SWDNBB/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26+ 512gb white
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SYWBQP/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+    #s26+ 512gb black
+    "https://www.amazon.com/Samsung-Unlocked-Smartphone-Charging-Warranty/dp/B0G4SSKLJM/ref=sr_1_2?crid=2UQYGUVE2NW9I&dib=eyJ2IjoiMSJ9.dmpAJBmc0kdQ-0UZY3qSO1kfTmE_zG7-B3BnDPlrHT4unck8bEo6awgs2XqYKN1Ioxsa3pqLoILDdlRDCoO2UzJ6bFYCr0F-44XU54bpcdiRCq9nQbtmhunaCfkopuNvY4QPN0zIHShJv2XmQUr_IRwyMskP7AwWQ6lH3oL1cSVZzgUSwhMskaIx2DiHwspx75klEDAQogS_AqpGWLzaCJFh6oc7DmjnWjhk3x4OrmA.Si2kDuvaGVezxppsFXjGC2L4g9-z8t0vUTmvCGDcVBI&dib_tag=se&keywords=s26%2Bultra&qid=1772457385&sprefix=s26%2Bult%2Caps%2C439&sr=8-2&th=1",
+
+
     ]
 
     bestbuy_urls = [
@@ -854,6 +933,105 @@ async def main():
     "https://www.bestbuy.com/product/samsung-galaxy-s25-edge-256gb-unlocked-titanium-silver/JJGRF3CQHC",
     #s25 edge 512gb titanium jet black
     "https://www.bestbuy.com/product/samsung-galaxy-s25-edge-512gb-unlocked-titanium-jet-black/JJGRF3CQKC",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #s26 ultra 256gb sky blue
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-ultra-256gb-unlocked-sky-blue/JJGRF36LTY",
+    #s26 ultra 256gb cobalt violet
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-ultra-256gb-unlocked-cobalt-violet/JJGRF36YJC",
+    #s26 ultra 256gb white
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-ultra-256gb-unlocked-white/JJGRF36L4Q",
+    #s26 ultra 256gb black
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-ultra-256gb-unlocked-black/JJGRF36YGZ",
+
+
+    #s26 ultra 512gb sky blue
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-ultra-512gb-unlocked-sky-blue/JJGRF36LRF",
+    #s26 ultra 512gb cobalt violet
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-ultra-512gb-unlocked-cobalt-violet/JJGRF36LVC",
+    #s26 ultra 512gb white
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-ultra-512gb-unlocked-white/JJGRF36LZ2",
+    #s26 ultra 512gb black
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-ultra-512gb-unlocked-black/JJGRF36Y3Q",
+
+    
+    #s26 ultra 1tb sky blue
+    "",
+    #s26 ultra 1tb cobalt violet
+    "",
+    #s26 ultra 1tb white
+    "",
+    #s26 ultra 1tb black
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-ultra-1tb-unlocked-black/JJGRF36Y3L",
+
+
+    #s26 256gb sky blue
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-256gb-unlocked-sky-blue/JJGRF36PKF",
+    #s26 256gb cobalt violet
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-256gb-unlocked-cobalt-violet/JJGRF36PHF",
+    #s26 256gb white
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-256gb-unlocked-white/JJGRF36PH8",
+    #s26 256gb black
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-256gb-unlocked-black/JJGRF36PKH",
+
+
+    #s26 512gb sky blue
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-512gb-unlocked-sky-blue/JJGRF3TX6S",
+    #s26 512gb cobalt violet
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-512gb-unlocked-cobalt-violet/JJGRF3TCZR",
+    #s26 512gb white
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-512gb-unlocked-white/JJGRF3TXZ4",
+    #s26 512gb black
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-512gb-unlocked-black/JJGRF3T2VP",
+
+
+    #s26+ 256gb sky blue
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-256gb-unlocked-sky-blue/JJGRF36S26",
+    #s26+ 256gb cobalt violet
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-256gb-unlocked-cobalt-violet/JJGRF36SCG",
+    #s26+ 256gb white
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-256gb-unlocked-white/JJGRF36SP3",
+    #s26+ 256gb black
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-256gb-unlocked-black/JJGRF368TV",
+
+
+    #s26+ 512gb sky blue
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-512gb-unlocked-sky-blue/JJGRF36PFQ",
+    #s26+ 512gb cobalt violet
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-512gb-unlocked-cobalt-violet/JJGRF36P52",
+    #s26+ 512gb white
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-512gb-unlocked-white/JJGRF36SLJ",
+    #s26+ 512gb black
+    "https://www.bestbuy.com/product/samsung-galaxy-s26-512gb-unlocked-black/JJGRF36SP9",
+
+
+
+
+
+
+
+
+
+
+
     ]
 
     samsung_urls = [
@@ -915,6 +1093,92 @@ async def main():
     "https://www.samsung.com/us/smartphones/galaxy-s25-ultra/buy/galaxy-s25-edge-512gb-unlocked-sku-sm-s937uzkexaa/",
 
     
+
+
+
+    
+
+
+
+
+
+
+
+
+    #S26 Ultra
+    #s26 ultra 256gb sky blue
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-256gb-unlocked-sku-sm-s948ulbaxaa/",
+    #s26 ultra 256gb Cobalt violet
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-256gb-unlocked-sku-sm-s948uzvaxaa/",
+    #s26 ultra 256gb white
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-256gb-unlocked-sku-sm-s948uzwaxaa/",
+    #s26 ultra 256gb black
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-256gb-unlocked-sku-sm-s948uzkaxaa/",
+
+
+    #s26 ultra 512gb sky blue
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-512gb-unlocked-sku-sm-s948ulbexaa/",
+    #s26 ultra 512gb Cobalt violet
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-512gb-unlocked-sku-sm-s948uzvexaa/",
+    #s26 ultra 512gb white
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-512gb-unlocked-sku-sm-s948uzwexaa/",
+    #s26 ultra 512gb black
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-512gb-unlocked-sku-sm-s948uzkexaa/",
+
+
+
+    #s26 ultra 1tb sky blue
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-1tb-unlocked-sku-sm-s948ulbfxaa/",
+    #s26 ultra 1tb Cobalt violet
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-1tb-unlocked-sku-sm-s948uzvfxaa/",
+    #s26 ultra 1tb white
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-1tb-unlocked-sku-sm-s948uzwfxaa/",
+    #s26 ultra 1tb black
+    "https://www.samsung.com/us/smartphones/galaxy-s26-ultra/buy/galaxy-s26-ultra-1tb-unlocked-sku-sm-s948uzkfxaa/",
+
+
+
+
+
+    #s26 256gb sky blue
+    "https://www.samsung.com/us/smartphones/galaxy-s26/buy/galaxy-s26-256gb-unlocked-sku-sm-s942ulbexaa/",
+    #s26 256gb Cobalt violet
+    "https://www.samsung.com/us/smartphones/galaxy-s26/buy/galaxy-s26-256gb-unlocked-sku-sm-s942uzvexaa/",
+    #s26 256gb white
+    "https://www.samsung.com/us/smartphones/galaxy-s26/buy/galaxy-s26-256gb-unlocked-sku-sm-s942uzwexaa/",
+    #s26 256gb black
+    "https://www.samsung.com/us/smartphones/galaxy-s26/buy/galaxy-s26-256gb-unlocked-sku-sm-s942uzkexaa/",
+
+
+    #s26 512gb sky blue
+    "https://www.samsung.com/us/smartphones/galaxy-s26/buy/galaxy-s26-512gb-unlocked-sku-sm-s942ulbfxaa/",
+    #s26 512gb Cobalt violet
+    "https://www.samsung.com/us/smartphones/galaxy-s26/buy/galaxy-s26-512gb-unlocked-sku-sm-s942uzvfxaa/",
+    #s26 512gb white
+    "https://www.samsung.com/us/smartphones/galaxy-s26/buy/galaxy-s26-512gb-unlocked-sku-sm-s942uzwfxaa/",
+    #s26 512gb black
+    "https://www.samsung.com/us/smartphones/galaxy-s26/buy/galaxy-s26-512gb-unlocked-sku-sm-s942uzkfxaa/",
+
+
+    #s26+ 256gb sky blue
+    "https://www.samsung.com/us/smartphones/galaxy-s26-plus/buy/galaxy-s26-plus-256gb-unlocked-sku-sm-s947ulbaxaa/",
+    #s26+ 256gb Cobalt violet
+    "https://www.samsung.com/us/smartphones/galaxy-s26-plus/buy/galaxy-s26-plus-256gb-unlocked-sku-sm-s947uzvaxaa/",
+    #s26+ 256gb white
+    "https://www.samsung.com/us/smartphones/galaxy-s26-plus/buy/galaxy-s26-plus-256gb-unlocked-sku-sm-s947uzwaxaa/",
+    #s26+ 256gb black
+    "https://www.samsung.com/us/smartphones/galaxy-s26-plus/buy/galaxy-s26-plus-256gb-unlocked-sku-sm-s947uzkaxaa/",
+
+
+    #s26+ 512gb sky blue
+    "https://www.samsung.com/us/smartphones/galaxy-s26-plus/buy/galaxy-s26-plus-512gb-unlocked-sku-sm-s947ulbexaa/",
+    #s26+ 512gb Cobalt violet
+    "https://www.samsung.com/us/smartphones/galaxy-s26-plus/buy/galaxy-s26-plus-512gb-unlocked-sku-sm-s947uzvexaa/",
+    #s26+ 512gb white
+    "https://www.samsung.com/us/smartphones/galaxy-s26-plus/buy/galaxy-s26-plus-512gb-unlocked-sku-sm-s947uzwexaa/",
+    #s26+ 512gb black
+    "https://www.samsung.com/us/smartphones/galaxy-s26-plus/buy/galaxy-s26-plus-512gb-unlocked-sku-sm-s947uzkexaa/",
+
 
     ]
 
