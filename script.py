@@ -394,6 +394,7 @@ def parse_amazon_html(html_file_path="amazon.html"):
 # BESTBUY-specific logic
 # -----------------------
 def parse_bestbuy_html(input_file="bestbuy.html"):
+
     # Load HTML file
     if not os.path.exists(input_file):
         print(f"Error: HTML file '{input_file}' not found.")
@@ -405,21 +406,25 @@ def parse_bestbuy_html(input_file="bestbuy.html"):
     soup = BeautifulSoup(html, "lxml")
 
     # -------- PRICE EXTRACTION --------
-    price_element = soup.select_one('[data-testid="price-block-customer-price"] span')
+    price_element = soup.select_one(
+        "span.font-sans.text-default.text-style-body-md-400.font-500.text-7.leading-7"
+    )
 
     if price_element:
         price = price_element.get_text(strip=True)
     else:
         price = "Price not found"
 
-    # -------- MODEL NUMBER EXTRACTION --------
-    model_element = soup.select_one('.disclaimer .inline-block')
+    # -------- SKU / MODEL NUMBER EXTRACTION --------
+    model_number = "Model number not found"
 
-    if model_element:
-        # model_element contains text like:  "Model: SM-S938UZBEXAA"
-        model_number = model_element.get_text(strip=True).replace("Model:", "").strip()
-    else:
-        model_number = "Model number not found"
+    disclaimer = soup.select_one("div.disclaimer.py-200")
+
+    if disclaimer:
+        sku_div = disclaimer.select_one("div.pr-150.inline-block")
+        if sku_div:
+            text = sku_div.get_text(strip=True)
+            model_number = text.replace("SKU:", "").strip()
 
     # Print results
     print("\n--- Extracted Product Data (BestBuy) ---")
