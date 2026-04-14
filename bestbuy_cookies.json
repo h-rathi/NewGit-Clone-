@@ -631,16 +631,6 @@
             "_crHasCrossSiteAncestor": true
         },
         {
-            "name": "_fbp",
-            "value": "fb.1.1768088575259.29182649912626774",
-            "domain": ".samsung.com",
-            "path": "/",
-            "expires": 1776123791,
-            "httpOnly": false,
-            "secure": false,
-            "sameSite": "Lax"
-        },
-        {
             "name": "pt",
             "value": "v2:3c4abae4231c15bd308730c2e2364c4a09d515bdb92fc840116589501f54563b|2bc48282ee950ba58552f4a3dc9cde586e3a340942869b4ad509c0fc19b85bda",
             "domain": ".ispot.tv",
@@ -671,55 +661,11 @@
             "sameSite": "Lax"
         },
         {
-            "name": "receive-cookie-deprecation",
-            "value": "1",
-            "domain": ".rubiconproject.com",
-            "path": "/",
-            "expires": 1776123790.783747,
-            "httpOnly": true,
-            "secure": true,
-            "sameSite": "None",
-            "partitionKey": "https://samsung.com",
-            "_crHasCrossSiteAncestor": true
-        },
-        {
             "name": "CMID",
             "value": "aWLj-9HM57IANWoJBpDYegAA",
             "domain": ".casalemedia.com",
             "path": "/",
             "expires": 1799883790.865275,
-            "httpOnly": false,
-            "secure": true,
-            "sameSite": "None"
-        },
-        {
-            "name": "CMPRO",
-            "value": "5697",
-            "domain": ".casalemedia.com",
-            "path": "/",
-            "expires": 1776123790.865316,
-            "httpOnly": false,
-            "secure": true,
-            "sameSite": "None"
-        },
-        {
-            "name": "tluidp",
-            "value": "4653593238079438473940",
-            "domain": ".3lift.com",
-            "path": "/",
-            "expires": 1776123790.970985,
-            "httpOnly": false,
-            "secure": true,
-            "sameSite": "None",
-            "partitionKey": "https://samsung.com",
-            "_crHasCrossSiteAncestor": true
-        },
-        {
-            "name": "tluid",
-            "value": "4653593238079438473940",
-            "domain": ".3lift.com",
-            "path": "/",
-            "expires": 1776123790.971056,
             "httpOnly": false,
             "secure": true,
             "sameSite": "None"
@@ -740,16 +686,6 @@
             "domain": ".inmobi.com",
             "path": "/",
             "expires": 1799624575.714889,
-            "httpOnly": false,
-            "secure": true,
-            "sameSite": "None"
-        },
-        {
-            "name": "li_sugr",
-            "value": "fe620776-f1f2-41ff-84e7-f26b813115f3",
-            "domain": ".linkedin.com",
-            "path": "/",
-            "expires": 1776123791.720324,
             "httpOnly": false,
             "secure": true,
             "sameSite": "None"
@@ -1366,16 +1302,6 @@
             "domain": "www.samsung.com",
             "path": "/",
             "expires": 1799883790,
-            "httpOnly": false,
-            "secure": true,
-            "sameSite": "None"
-        },
-        {
-            "name": "KRTBCOOKIE_32",
-            "value": "11175-AQADlqxLQku9-AE5P_YQAQFUzAEBAQCaq0ubkgEBAJq4vO0Z&KRTB&22715-AQADlqxLQku9-AE5P_YQAQFUzAEBAQCaq0ubkgEBAJq4vO0Z&KRTB&23519-AQADlqxLQku9-AE5P_YQAQFUzAEBAQCaq0ubkgEBAJq4vO0Z&KRTB&23632-AQADlqxLQku9-AE5P_YQAQFUzAEBAQCaq0ubkgEBAJq4vO0Z",
-            "domain": ".pubmatic.com",
-            "path": "/",
-            "expires": 1776123790.779431,
             "httpOnly": false,
             "secure": true,
             "sameSite": "None"
