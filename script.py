@@ -21,9 +21,148 @@ import re
 from urllib.parse import quote_plus
 from playwright.async_api import async_playwright, TimeoutError
 from bs4 import BeautifulSoup
-from openpyxl.utils import column_index_from_string
+from openpyxl.utils import column_index_from_string, get_column_letter
 # new imports for Excel writing
 from openpyxl import Workbook, load_workbook
+
+# =========================================================================
+# script_2.py fixes (vs script.py)
+# -------------------------------------------------------------------------
+# 1. Redirect detection: many product pages now silently redirect to a
+#    *different* product (e.g. S26 Ultra -> S25 FE, Z Fold 7 -> Z Flip 7) when
+#    the item is out of stock/unavailable. We compare the product identifier we
+#    REQUESTED (ASIN / BestBuy code / Samsung SKU) against the identifier in the
+#    page's <link rel="canonical">. On mismatch we record "not available".
+# 2. Duplicate-element fix: the old hardcoded selectors matched many elements on
+#    the page (related items, sponsored, carousels), causing wrong reads. We now
+#    scope price extraction to the MAIN price container only.
+# 3. Updated selectors for current UI: Amazon price -> corePriceDisplay /
+#    priceToPay; BestBuy & Samsung price -> JSON-LD offer (Samsung keyed by SKU).
+# 4. BestBuy S26 fix: those pages fail Playwright's HTTP/2 with
+#    ERR_HTTP2_PROTOCOL_ERROR, so nothing saved. We launch BestBuy's Chromium
+#    with --disable-http2 (forces HTTP/1.1) so S26 pages load.
+# 5. results.xlsx now uses the same layout as "Price Comparisons_v3_WIP":
+#    51 product groups x 9 columns starting at column C, timestamp in column B.
+# Everything else (URLs, delays, user agents, cookies logic) is unchanged.
+# =========================================================================
+NOT_AVAILABLE = "not available"
+
+# Excel layout of Price Comparisons_v3_WIP (per product group of 9 columns):
+#   +0 Amazon price  +1 Samsung price  +2 BestBuy price
+#   +3 SKU_Amazon    +4 SKU_Samsung    +5 SKU_BestBuy
+#   +6 vs Amazon (formula, left blank)  +7 vs Bestbuy (formula, left blank)  +8 blank
+FIRST_GROUP_COL = 3        # column C
+GROUP_STRIDE    = 9
+TIMESTAMP_COL   = 2        # column B
+
+# Product group headers for row 1 (matches the WIP workbook, 51 slots in order)
+PRODUCT_LABELS = [
+    "Z Fold 7 512 GB", "S25 Ultra 512GB", "Z Flip 512 GB", "S25 Edge 512 GB",
+    "Galaxy Tab S11 512 GB", "Galaxy Watch Ultra (2025)", "Galaxy Watch8 Classic",
+    "Galaxy Buds3 Pro", "Z Fold 7 256GB Blue Shadow", "Z Fold 7 256GB Jet Black",
+    "Z Fold 7 256GB Silver Shadow", "Z Fold 7 1TB Zet Black", "Z Fold 7 512GB Zet Black",
+    "Z Fold 7 512GB Silver Shadow", "S25 Ultra 256GB Titanium Black",
+    "S25 Ultra 256GB Titanium Gray", "S25 Ultra 256GB Titanium Silver Blue",
+    "S25 Ultra 256GB Titanium White Silver", "S25 Ultra 512GB Titanium Gray",
+    "S25 Ultra 512GB Titanium Silver Blue", "S25 Ultra 512GB Titanium White Silver",
+    "S25 Edge 256GB Titanium Silver", "S25 Edge 512GB Titanium Jet Black",
+    "S26 Ultra 256GB Sky Blue", "S26 Ultra 256GB Cobalt Violet", "S26 Ultra 256GB White",
+    "S26 Ultra 256GB Black", "S26 Ultra 512GB Sky Blue", "S26 Ultra 512GB Cobalt Violet",
+    "S26 Ultra 512GB White", "S26 Ultra 512GB Black", "S26 Ultra 1TB Sky Blue ",
+    "S26 Ultra 1TB Cobalt Violet", "S26 Ultra 1TB White", "S26 Ultra 1TB Black",
+    "S26 256GB Sky Blue", "S26 256GB Cobalt Violet", "S26 256GB White", "S26 256GB Black",
+    "S26 512GB Sky Blue", "S26 512GB Cobalt Violet", "S26 512GB White", "S26 512GB Black",
+    "S26+ 256GB Sky Blue", "S26+ 256GB Cobalt Violet", "S26+ 256GB White", "S26+ 256GB Black",
+    "S26+ 512GB Sky Blue", "S26+ 512GB Cobalt Violet", "S26+ 512GB White", "S26+ 512GB Black",
+]
+SUBHEADERS = ["Amazon price", "Samsung price", "BestBuy.com price",
+              "SKU_ID_Amazon ", "SKU_ID_Samsung ", "SKU_ID_BestBuy.com",
+              "vs Amazon", "vs Bestbuy"]
+
+
+# ---- product identifiers (used for redirect detection & slot SKUs) ----
+def amazon_id_from_url(url):
+    m = re.search(r"/dp/([A-Z0-9]{10})", url or "", re.I)
+    return m.group(1).upper() if m else None
+
+def bestbuy_id_from_url(url):
+    m = re.search(r"/product/[^/]+/([A-Z0-9]+)", url or "", re.I)
+    return m.group(1).upper() if m else None
+
+def get_canonical_href(html):
+    """Pull <link rel=canonical href=...> without a full DOM parse."""
+    m = re.search(r'<link\b[^>]*\brel=["\']canonical["\'][^>]*>', html, re.I)
+    if not m:
+        return None
+    h = re.search(r'href=["\']([^"\']+)["\']', m.group(0), re.I)
+    return h.group(1) if h else None
+
+def iter_ldjson(html):
+    """Yield parsed JSON-LD objects from the HTML (regex-sliced, fast)."""
+    for m in re.finditer(
+            r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+            html, re.I | re.S):
+        try:
+            data = json.loads(m.group(1).strip())
+        except Exception:
+            continue
+        for it in (data if isinstance(data, list) else [data]):
+            yield it
+
+
+# ---- price cleaning (ported from ConvertDirtyTextPriceToNumbers/main2) ----
+def clean_price_value(raw):
+    """Return a float rounded to 2dp, or None. Mirrors main2_decimalPlaceTill2."""
+    if raw is None:
+        return None
+    s = str(raw).strip()
+    if s == "" or s == NOT_AVAILABLE:
+        return None
+    negative = False
+    if s.startswith("(") and s.endswith(")"):
+        negative = True
+        s = s[1:-1].strip()
+    s = re.sub(r"[^\d\.,\-]", "", s)
+    if s == "" or re.fullmatch(r"[-\.,]*", s):
+        return None
+    s = s.replace("−", "-")
+    if "-" in s:
+        if s.count("-") > 1:
+            s = s.replace("-", "")
+        if s.startswith("-"):
+            negative = not negative
+            s = s.lstrip("-")
+    has_dot, has_comma = "." in s, "," in s
+    if has_dot and has_comma:
+        if s.rfind(",") > s.rfind("."):
+            s = s.replace(".", "").replace(",", ".")
+        else:
+            s = s.replace(",", "")
+            if s.count(".") > 1:
+                left, right = s.rsplit(".", 1)
+                s = left.replace(".", "") + "." + right
+    elif has_comma and not has_dot:
+        parts = s.split(",")
+        if len(parts) >= 2 and len(parts[-1]) == 2:
+            s = ",".join(parts[:-1]).replace(",", "") + "." + parts[-1]
+        else:
+            s = s.replace(",", "")
+    elif has_dot and not has_comma:
+        if s.count(".") > 1:
+            left, right = s.rsplit(".", 1)
+            s = left.replace(".", "") + "." + right
+    s = re.sub(r"[^\d.]", "", s)
+    if s.count(".") > 1:
+        left, right = s.rsplit(".", 1)
+        s = left.replace(".", "") + "." + right
+    if s in ("", "."):
+        return None
+    try:
+        value = round(float(s), 2)
+    except Exception:
+        return None
+    return -value if negative else value
+
 
 # -----------------------
 # Shared helpers
@@ -36,6 +175,34 @@ async def human_delay(min_sec=0.5, max_sec=2.5):
 async def human_delay_short():
     """Small helper to yield control briefly (kept minimal to respect original logic)."""
     await asyncio.sleep(0.1)
+
+async def get_page_content_safe(page, retries=4):
+    """Return page HTML, tolerating in-flight client-side navigations.
+
+    BestBuy fires a delayed client-side navigation/reload ~20s after load, which
+    made a bare `page.content()` throw:
+      "Unable to retrieve content because the page is navigating and changing".
+    We wait for the page to settle and retry; as a last resort we read
+    document.documentElement.outerHTML via JS (works mid-navigation).
+    """
+    last_err = None
+    for attempt in range(retries):
+        try:
+            # let any in-flight navigation finish before grabbing content
+            try:
+                await page.wait_for_load_state("domcontentloaded", timeout=8000)
+            except Exception:
+                pass
+            return await page.content()
+        except Exception as e:
+            last_err = e
+            # brief settle, then retry
+            await asyncio.sleep(2.5)
+    # final fallback: pull the DOM directly (succeeds even while navigating)
+    try:
+        return await page.evaluate("() => document.documentElement.outerHTML")
+    except Exception:
+        raise last_err
 
 def sanitize_filename(s: str, maxlen: int = 200) -> str:
     """Create a filesystem-safe short filename from a string (URL)."""
@@ -50,6 +217,87 @@ def _to_jsonable(v):
     if isinstance(v, (dict, list, tuple)):
         return json.dumps(v, ensure_ascii=False)
     return v
+
+def _render_cells(result, slot_sku, site):
+    """Given a per-URL result dict, return (price_cell, sku_cell) for the sheet.
+
+    - price -> float when parseable, "not available" for redirect/no-price, else None.
+    - sku   -> canonical per-slot SM code (Amazon/BestBuy upper, Samsung lower);
+               "not available" mirrors the price when the product wasn't found.
+    """
+    raw = result.get("price") if result else None
+    if raw == NOT_AVAILABLE:
+        return NOT_AVAILABLE, NOT_AVAILABLE
+    num = clean_price_value(raw)
+    if num is None:
+        return None, None            # genuine gap (fetch error / empty URL) -> blank
+    sku = None
+    if slot_sku:
+        sku = slot_sku if site == "samsung" else slot_sku.upper()
+    return num, sku
+
+
+def save_results_wip_format(am_res, bb_res, sam_res, samsung_urls, ts_str,
+                            excel_path="outputs/results.xlsx"):
+    """Append one row per run to results.xlsx using the SAME layout as
+    'Price Comparisons_v3_WIP.xlsx':
+      - row 1 = product group headers, row 2 = sub-headers, data from row 3
+      - 51 groups x 9 columns starting at column C; timestamp in column B
+      - each group: Amazon/Samsung/BestBuy price, 3 SKU columns, 2 'vs'
+        formula columns (filled with the same formulas as the WIP file), 1 blank
+    Prices are written as numbers; SKU columns filled; 'vs' formulas added per
+    row. Existing rows are kept.
+    """
+    os.makedirs(os.path.dirname(excel_path) or ".", exist_ok=True)
+
+    if os.path.exists(excel_path):
+        wb = load_workbook(excel_path)
+        ws = wb.active
+    else:
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Sheet1"
+        ws.cell(row=2, column=TIMESTAMP_COL, value="Timestamp EST")
+        for s in range(len(PRODUCT_LABELS)):
+            gc = FIRST_GROUP_COL + GROUP_STRIDE * s
+            ws.cell(row=1, column=gc, value=PRODUCT_LABELS[s])
+            for off, name in enumerate(SUBHEADERS):
+                ws.cell(row=2, column=gc + off, value=name)
+
+    r = ws.max_row + 1 if ws.max_row >= 2 else 3
+    ws.cell(row=r, column=TIMESTAMP_COL, value=ts_str)
+
+    n = len(PRODUCT_LABELS)
+    for s in range(n):
+        gc = FIRST_GROUP_COL + GROUP_STRIDE * s
+        slot_sku = extract_sku_from_url(samsung_urls[s]) if s < len(samsung_urls) else None
+        slot_sku = slot_sku.lower() if slot_sku else None
+
+        for off, (res_list, site) in enumerate([
+                (am_res, "amazon"), (sam_res, "samsung"), (bb_res, "bestbuy")]):
+            result = res_list[s] if s < len(res_list) else None
+            price_cell, sku_cell = _render_cells(result, slot_sku, site)
+            pc = ws.cell(row=r, column=gc + off, value=price_cell)
+            if isinstance(price_cell, float):
+                pc.number_format = "0.00"
+            ws.cell(row=r, column=gc + 3 + off, value=sku_cell)
+
+        # +6 vs Amazon, +7 vs Bestbuy : same formulas as the WIP file, added on
+        # every data row so they're in place as rows accumulate.
+        #   vs Amazon  = Amazon price  / Samsung price - 1
+        #   vs Bestbuy = BestBuy price / Samsung price - 1
+        amazon_col  = get_column_letter(gc + 0)
+        samsung_col = get_column_letter(gc + 1)
+        bestbuy_col = get_column_letter(gc + 2)
+        ws.cell(row=r, column=gc + 6,
+                value=f"={amazon_col}{r}/{samsung_col}{r}-1")
+        ws.cell(row=r, column=gc + 7,
+                value=f"={bestbuy_col}{r}/{samsung_col}{r}-1")
+        # +8 blank separator : intentionally left untouched
+
+    wb.save(excel_path)
+    print(f"✅ Results appended (WIP layout) to {excel_path} at row {r}")
+
 
 def save_dict_to_excel_row(data: dict, excel_path: str = "outputs/results.xlsx"):
     """
@@ -265,6 +513,12 @@ async def save_amazon_htmls(
         try:
             results = []
             for idx, url in enumerate(urls, start=1):
+                # empty slot (e.g. product not yet listed): keep the position so
+                # results stay aligned with the product groups, but skip cleanly.
+                if not url or not url.strip():
+                    print(f"\n[Amazon {idx}/{len(urls)}] empty URL slot -> skipping")
+                    results.append({"url": url, "file": None, "price": None, "model": None, "status": "empty"})
+                    continue
                 try:
                     safe_name = sanitize_filename(url)[:120]
                     output_file = os.path.join(output_dir, f"amazon_{idx}_{safe_name}.html")
@@ -290,18 +544,25 @@ async def save_amazon_htmls(
                         await page.mouse.wheel(0, scroll_y)
                         await human_delay(1, 3)
 
-                    # Extract HTML
-                    html_content = await page.content()
+                    # Extract HTML (resilient to any mid-load client-side navigation)
+                    html_content = await get_page_content_safe(page)
                     with open(output_file, "w", encoding="utf-8") as f:
                         f.write(html_content)
                     print(f"✅ HTML saved to {output_file}")
 
-                    # parse and collect results (keeps your parsing logic)
-                    price, model_number = parse_amazon_html(output_file)
+                    # parse and collect results (updated: redirect-aware, scoped price)
+                    price, redirected = parse_amazon_html(output_file, expected_url=url)
 
                     await page.close()
 
-                    results.append({"url": url, "file": output_file, "price": price, "model": model_number, "status": "ok"})
+                    if redirected:
+                        results.append({"url": url, "file": output_file, "price": NOT_AVAILABLE, "model": NOT_AVAILABLE, "status": "redirect"})
+                    elif not price:
+                        results.append({"url": url, "file": output_file, "price": NOT_AVAILABLE, "model": NOT_AVAILABLE, "status": "no_price"})
+                    else:
+                        # Amazon no longer exposes the SM- model on the page; the
+                        # writer fills SKU_Amazon from the known per-slot SM code.
+                        results.append({"url": url, "file": output_file, "price": price, "model": None, "status": "ok"})
                 except Exception as e:
                     print(f"❌ Error processing URL {url}: {e}")
                     try:
@@ -321,119 +582,124 @@ async def save_amazon_htmls(
 
     return results
 
-def parse_amazon_html(html_file_path="amazon.html"):
-    # -------- Read HTML --------
+def parse_amazon_html(html_file_path="amazon.html", expected_url=None):
+    """Return (price_text_or_None, redirected_bool).
+
+    - Redirect: compare requested ASIN vs the page's canonical link.
+    - Price: scoped to the MAIN price container (corePriceDisplay / priceToPay)
+      so we don't pick up sponsored/related prices elsewhere on the page.
+    """
     if not os.path.exists(html_file_path):
         print(f"Error: HTML file '{html_file_path}' not found.")
-        return None, None
+        return None, False
 
-    with open(html_file_path, "r", encoding="utf-8") as file:
+    with open(html_file_path, "r", encoding="utf-8", errors="ignore") as file:
         html_content = file.read()
+
+    # -------- REDIRECT DETECTION --------
+    expected_asin = amazon_id_from_url(expected_url) if expected_url else None
+    canonical = get_canonical_href(html_content)
+    if expected_asin and canonical:
+        can_asin = amazon_id_from_url(canonical)
+        if can_asin and can_asin != expected_asin:
+            print(f"[REDIRECT] requested {expected_asin} but page is {can_asin} -> not available")
+            return None, True
 
     soup = BeautifulSoup(html_content, "lxml")
 
-    # -------- CHECK FOR AVAILABILITY MESSAGES (new) --------
-    import re
+    # -------- PRICE EXTRACTION (scoped to the main buybox price container) --------
     price = None
-    page_text = soup.get_text(separator=" ", strip=True)
+    core = (soup.find(id="corePriceDisplay_desktop_feature_div")
+            or soup.find(id="corePrice_feature_div")
+            or soup.find(id="apex_desktop"))
+    if core:
+        pt = (core.find(class_="priceToPay")
+              or core.find(class_="apexPriceToPay")
+              or core)
+        price_whole = pt.find("span", {"class": "a-price-whole"})
+        price_fraction = pt.find("span", {"class": "a-price-fraction"})
+        if price_whole:
+            whole = re.sub(r"[^\d,]", "", price_whole.get_text())
+            frac = re.sub(r"[^\d]", "", price_fraction.get_text()) if price_fraction else "00"
+            price = f"{whole}.{frac or '00'}"
+        else:
+            for off in pt.find_all("span", {"class": "a-offscreen"}):
+                t = off.get_text(strip=True)
+                if t:
+                    price = t
+                    break
 
-    availability_phrases = [
-        "Currently unavailable",
-        "This item cannot be shipped to your selected delivery location"
-    ]
-
-    for phrase in availability_phrases:
-        m = re.search(re.escape(phrase), page_text, re.I)
-        if m:
-            # set price to the matched phrase exactly as found on page
-            price = m.group(0)
-            break
-
-    # -------- PRICE EXTRACTION (kept the same) --------
-    # If neither availability phrase was found, run the original price extraction logic
-    if price is None:
-        # Locate the element that holds the price information (the 'a-price-whole' class for the whole price)
-        price_whole = soup.find("span", {"class": "a-price-whole"})  # The main price whole part
-        price_fraction = soup.find("span", {"class": "a-price-fraction"})  # The decimal part of the price
-        price_symbol = soup.find("span", {"class": "a-price-symbol"})  # The currency symbol
-
-        # If we found the whole part and fraction part of the price
-        if price_whole and price_fraction:
-            # Safely get symbol text if present
-            symbol_text = price_symbol.get_text().strip() if price_symbol else ""
-            price = symbol_text + price_whole.get_text().strip() + "." + price_fraction.get_text().strip()
-
-    # Print price or fallback message
     if price:
         print(f"The price of the product is: {price}")
     else:
         print("Price not found in the HTML file.")
 
-    # -------- MODEL NUMBER EXTRACTION (kept the same) --------
-    model_number = None
-
-    # Find a <th> whose text contains "Item model number" (case-insensitive, trimmed)
-    th_tag = soup.find(lambda tag: tag.name == "th" and "item model number" in tag.get_text(strip=True).lower())
-
-    if th_tag:
-        # Find the next <td> sibling that contains the model number
-        td_tag = th_tag.find_next_sibling("td")
-        if td_tag:
-            model_number = td_tag.get_text(strip=True)
-
-    # Print model number or fallback message
-    if model_number:
-        print(f"The model number is: {model_number}")
-    else:
-        print("Model number not found in the HTML file.")
-
-    return price, model_number
+    return price, False
 
 
 # -----------------------
 # BESTBUY-specific logic
 # -----------------------
-def parse_bestbuy_html(input_file="bestbuy.html"):
+def parse_bestbuy_html(input_file="bestbuy.html", expected_url=None):
 
     # Load HTML file
     if not os.path.exists(input_file):
         print(f"Error: HTML file '{input_file}' not found.")
-        return "Price not found", "Model number not found"
+        return None, None, False
 
-    with open(input_file, "r", encoding="utf-8") as f:
+    with open(input_file, "r", encoding="utf-8", errors="ignore") as f:
         html = f.read()
 
-    soup = BeautifulSoup(html, "lxml")
+    # -------- REDIRECT DETECTION --------
+    expected_code = bestbuy_id_from_url(expected_url) if expected_url else None
+    canonical = get_canonical_href(html)
+    if expected_code and canonical:
+        can_code = bestbuy_id_from_url(canonical)
+        if can_code and can_code != expected_code:
+            print(f"[REDIRECT] requested {expected_code} but page is {can_code} -> not available")
+            return None, None, True
 
-    # -------- PRICE EXTRACTION --------
-    price_element = soup.select_one(
-        "span.font-sans.text-default.text-style-body-md-400.font-500.text-7.leading-7"
-    )
+    # -------- PRICE + MODEL from JSON-LD (single, reliable source) --------
+    price = None
+    model_number = None
+    for it in iter_ldjson(html):
+        if not isinstance(it, dict):
+            continue
+        if price is None:
+            off = it.get("offers")
+            if isinstance(off, dict) and off.get("price"):
+                price = str(off["price"])
+            elif isinstance(off, list):
+                for o in off:
+                    if isinstance(o, dict) and o.get("price"):
+                        price = str(o["price"]); break
+        # Model Number is exposed as a PropertyValue in additionalProperty
+        for prop in it.get("additionalProperty", []) or []:
+            if isinstance(prop, dict) and str(prop.get("name", "")).lower() == "model number":
+                model_number = prop.get("value")
+    # regex fallback for model number if not in a parsed object
+    if not model_number:
+        m = re.search(r'"name"\s*:\s*"Model Number"\s*,\s*"value"\s*:\s*"([^"]+)"', html)
+        if m:
+            model_number = m.group(1)
 
-    if price_element:
-        price = price_element.get_text(strip=True)
-    else:
-        price = "Price not found"
+    # -------- PRICE fallback: main visible price element (scoped) --------
+    if not price:
+        soup = BeautifulSoup(html, "lxml")
+        el = soup.select_one(
+            "div[data-testid='customer-price'] span, "
+            "span.font-sans.text-default.text-style-body-md-400.font-500.text-7.leading-7"
+        )
+        if el:
+            price = el.get_text(strip=True)
 
-    # -------- SKU / MODEL NUMBER EXTRACTION --------
-    model_number = "Model number not found"
-
-    disclaimer = soup.select_one("div.disclaimer.py-200")
-
-    if disclaimer:
-        sku_div = disclaimer.select_one("div.pr-150.inline-block")
-        if sku_div:
-            text = sku_div.get_text(strip=True)
-            model_number = text.replace("SKU:", "").strip()
-
-    # Print results
     print("\n--- Extracted Product Data (BestBuy) ---")
     print(f"File: {input_file}")
     print(f"Price: {price}")
     print(f"Model Number: {model_number}")
     print("--------------------------------\n")
 
-    return price, model_number
+    return price, model_number, False
 
 async def save_bestbuy_htmls(
     urls,
@@ -448,7 +714,12 @@ async def save_bestbuy_htmls(
     os.makedirs(output_dir, exist_ok=True)
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=headless, slow_mo=100)
+        # --disable-http2: BestBuy's CDN breaks Playwright's HTTP/2 on the newer
+        # S26 product pages (net::ERR_HTTP2_PROTOCOL_ERROR), so those pages never
+        # loaded/saved. Forcing HTTP/1.1 makes them load reliably.
+        browser = await p.chromium.launch(
+            headless=headless, slow_mo=100, args=["--disable-http2"]
+        )
 
         # Load existing cookies/session state if available
         if os.path.exists(cookies_file):
@@ -468,6 +739,12 @@ async def save_bestbuy_htmls(
         results = []
         try:
             for idx, url in enumerate(urls, start=1):
+                # empty slot (e.g. product not yet listed): keep the position so
+                # results stay aligned with the product groups, but skip cleanly.
+                if not url or not url.strip():
+                    print(f"\n[BestBuy {idx}/{len(urls)}] empty URL slot -> skipping")
+                    results.append({"url": url, "file": None, "price": None, "model": None, "status": "empty"})
+                    continue
                 safe_name = sanitize_filename(url)[:120]
                 output_file = os.path.join(output_dir, f"bestbuy_{idx}_{safe_name}.html")
                 page = None
@@ -509,16 +786,22 @@ async def save_bestbuy_htmls(
                         await page.mouse.wheel(0, scroll_y)
                         await human_delay(1, 3)
 
-                    # Extract HTML
-                    html_content = await page.content()
+                    # Extract HTML (resilient to BestBuy's mid-load client-side
+                    # navigation which used to make page.content() throw)
+                    html_content = await get_page_content_safe(page)
                     with open(output_file, "w", encoding="utf-8") as f:
                         f.write(html_content)
                     print(f"✅ HTML saved to {output_file}")
 
-                    # Parse and collect results (uses your exact parsing logic)
-                    price, model = parse_bestbuy_html(output_file)
+                    # Parse and collect results (updated: redirect-aware, JSON-LD)
+                    price, model, redirected = parse_bestbuy_html(output_file, expected_url=url)
 
-                    results.append({"url": url, "file": output_file, "price": price, "model": model, "status": "ok"})
+                    if redirected:
+                        results.append({"url": url, "file": output_file, "price": NOT_AVAILABLE, "model": NOT_AVAILABLE, "status": "redirect"})
+                    elif not price:
+                        results.append({"url": url, "file": output_file, "price": NOT_AVAILABLE, "model": NOT_AVAILABLE, "status": "no_price"})
+                    else:
+                        results.append({"url": url, "file": output_file, "price": price, "model": model, "status": "ok"})
                     await page.close()
                 except Exception as e:
                     print(f"❌ Error processing URL {url}: {e}")
@@ -569,55 +852,45 @@ def extract_sku_from_url(url: str):
     return None
 
 
-def extract_price(filename):
-    """Extract  model price from saved HTML using BeautifulSoup."""
+def extract_price(filename, expected_url=None):
+    """Return (price_text_or_None, redirected_bool) for a saved Samsung page.
+
+    Updated for the current UI: the old #device_info aria-checked radios are gone.
+    The reliable source is the JSON-LD Product offer, keyed to the exact SKU, so
+    we never pick up a sibling variant's price. Redirects are detected via the
+    page's canonical link.
+    """
     if not os.path.exists(filename):
         print(f"❌ File not found for parsing: {filename}")
-        return None
+        return None, False
 
-    with open(filename, "r", encoding="utf-8") as f:
-        soup = BeautifulSoup(f, "html.parser")
+    with open(filename, "r", encoding="utf-8", errors="ignore") as f:
+        html = f.read()
 
-    container = soup.find(id="device_info")
-    if not container:
-        print("❌ device_info not found in HTML")
-        return None
+    expected_sku = extract_sku_from_url(expected_url) if expected_url else None
+    expected_sku = expected_sku.lower() if expected_sku else None
 
-    radios = container.find_all(attrs={"role": "radio"})
-    target = None
+    # -------- REDIRECT DETECTION --------
+    canonical = get_canonical_href(html)
+    if expected_sku and canonical:
+        can_sku = extract_sku_from_url(canonical)
+        can_sku = can_sku.lower() if can_sku else None
+        if can_sku and can_sku != expected_sku:
+            print(f"[REDIRECT] requested {expected_sku} but page is {can_sku} -> not available")
+            return None, True
 
-    # Prefer aria-checked=true
-    for r in radios:
-        if r.get("aria-checked") == "true":
-            target = r
-            break
+    # -------- PRICE from JSON-LD offer keyed to the SKU --------
+    price = None
+    for it in iter_ldjson(html):
+        if isinstance(it, dict) and it.get("sku"):
+            if expected_sku and str(it["sku"]).lower() != expected_sku:
+                continue
+            off = it.get("offers")
+            if isinstance(off, dict) and off.get("price"):
+                price = str(off["price"]); break
 
-    # Otherwise find 512GB
-    # if target is None:
-    #     for r in radios:
-    #         if "512" in r.get_text():
-    #             target = r
-    #             break
-
-    # if not target:
-    #     print("❌ Could not find 512GB radio")
-    #     return None
-
-    # Extract price
-    text = target.get_text("\n", strip=True)
-    prices = re.findall(r"\$\s*[\d,]+\.\d{2}", text)
-
-    # Choose price that is NOT a "was:" value
-    selected = None
-    for line in text.split("\n"):
-        if "$" in line and "was" not in line.lower():
-            m = re.search(r"\$\s*[\d,]+\.\d{2}", line)
-            if m:
-                selected = m.group(0)
-                break
-
-    print("🔎 Extracted Price:", selected or (prices[-1] if prices else None))
-    return selected or (prices[-1] if prices else None)
+    print("🔎 Extracted Price:", price)
+    return price, False
 
 async def save_samsung_htmls(
     urls,
@@ -643,6 +916,12 @@ async def save_samsung_htmls(
         results = []
         try:
             for idx, url in enumerate(urls, start=1):
+                # empty slot (e.g. product not yet listed): keep the position so
+                # results stay aligned with the product groups, but skip cleanly.
+                if not url or not url.strip():
+                    print(f"\n[Samsung {idx}/{len(urls)}] empty URL slot -> skipping")
+                    results.append({"url": url, "file": None, "price": None, "sku": None, "status": "empty"})
+                    continue
                 safe_name = sanitize_filename(url)
                 output_file = os.path.join(output_dir, f"samsung_{idx}_{safe_name}.html")
 
@@ -672,7 +951,7 @@ async def save_samsung_htmls(
                     except TimeoutError:
                         print("❌ #device_info did NOT load — Samsung blocked or loaded too slowly.")
                         # Still save HTML for debugging
-                        html = await page.content()
+                        html = await get_page_content_safe(page)
                         with open(output_file, "w", encoding="utf-8") as f:
                             f.write(html)
                         sku = extract_sku_from_url(url)
@@ -685,8 +964,8 @@ async def save_samsung_htmls(
                     # Extra wait for prices inside #device_info
                     await page.wait_for_selector("#device_info span", timeout=15000)
 
-                    # Save HTML
-                    html = await page.content()
+                    # Save HTML (resilient to any mid-load client-side navigation)
+                    html = await get_page_content_safe(page)
                     with open(output_file, "w", encoding="utf-8") as f:
                         f.write(html)
                     print(f"✅ HTML saved to {output_file}")
@@ -696,12 +975,18 @@ async def save_samsung_htmls(
                     # with open(cookies_file, "w", encoding="utf-8") as f:
                     #     json.dump(storage, f, indent=2)
 
-                    # Parse saved HTML using your exact functions
-                    price = extract_price(output_file)
+                    # Parse saved HTML (updated: redirect-aware, JSON-LD by SKU)
+                    price, redirected = extract_price(output_file, expected_url=url)
                     sku = extract_sku_from_url(url)
 
-                    print("🔎 Final extracted values — Price:", price, "SKU:", sku)
-                    results.append({"url": url, "file": output_file, "price": price, "sku": sku, "status": "ok"})
+                    if redirected:
+                        print("[REDIRECT] Samsung redirect -> not available")
+                        results.append({"url": url, "file": output_file, "price": NOT_AVAILABLE, "sku": NOT_AVAILABLE, "status": "redirect"})
+                    elif not price:
+                        results.append({"url": url, "file": output_file, "price": NOT_AVAILABLE, "sku": NOT_AVAILABLE, "status": "no_price"})
+                    else:
+                        print("🔎 Final extracted values — Price:", price, "SKU:", sku)
+                        results.append({"url": url, "file": output_file, "price": price, "sku": sku, "status": "ok"})
 
                     # tiny cooperative yield
                     await human_delay_short()
@@ -1206,34 +1491,17 @@ async def main():
         print(r)
 
     # -----------------------
-    # Flatten results into a single dict: keys -> values
-    # Keys format: "<site>_<index>_<keyname>" e.g. "amazon_1_url", "bestbuy_2_price"
+    # Write results in the SAME layout as Price Comparisons_v3_WIP.xlsx
+    # (one row per run; prices + SKU columns only; 'vs' formulas left blank).
+    # am_res / bb_res / sam_res are in URL order, i.e. slot order, so index s
+    # maps directly to product group s.
     # -----------------------
-    flat = {}
     utc_now = datetime.datetime.now(datetime.timezone.utc)
     est_now = utc_now.astimezone(ZoneInfo("US/Eastern"))
-    #flat["run_timestamp"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    # Format: 05 Dec 2025, 07:25
-    flat["run_timestamp"] = est_now.strftime("%d %b %Y, %H:%M")
-    # Amazon
-    for i, item in enumerate(am_res, start=1):
-        for k, v in item.items():
-            flat_key = f"amazon_{i}_{k}"
-            flat[flat_key] = v
-    # BestBuy
-    for i, item in enumerate(bb_res, start=1):
-        for k, v in item.items():
-            flat_key = f"bestbuy_{i}_{k}"
-            flat[flat_key] = v
-    # Samsung
-    for i, item in enumerate(sam_res, start=1):
-        for k, v in item.items():
-            flat_key = f"samsung_{i}_{k}"
-            flat[flat_key] = v
+    ts_str = est_now.strftime("%d %b %Y, %H:%M")   # e.g. "05 Dec 2025, 07:25"
 
-    # Save flattened results to Excel (appends as new row)
     excel_file = os.path.join("outputs", "results.xlsx")
-    save_dict_to_excel_row(flat, excel_file)
+    save_results_wip_format(am_res, bb_res, sam_res, samsung_urls, ts_str, excel_file)
 
 if __name__ == "__main__":
     asyncio.run(main())
