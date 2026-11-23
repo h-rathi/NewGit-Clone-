@@ -41,7 +41,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install playwright beautifulsoup4 openpyxl lxml
+          pip install playwright beautifulsoup4 openpyxl lxml tzdata
 
       - name: Install Playwright browsers (with deps)
         run: |
